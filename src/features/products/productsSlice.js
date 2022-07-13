@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialProducts = {
+const initialState = {
     items: [],
     isLoading: false,
     error: null
@@ -8,11 +8,13 @@ const initialProducts = {
 
 export const productsSlice = createSlice({
     name: "products",
-    initialState: initialProducts,
+    initialState,
     reducers: {
-        getProducts: (state) => state,
+        // getProducts: (state) => state,
     }
 })
 
 export const { getProducts } = productsSlice.actions;
 export default productsSlice.reducer;
+
+// !!!!!!!!!!!!!!! we dont need this because we are calling via RTK query
