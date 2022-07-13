@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'flowbite-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../../features/Cart/cartSlice';
 
@@ -8,8 +8,10 @@ const Product = ({ product }) => {
     const { id, price, img, name, storage } = product;
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))
+        navigate('/cart')
     }
     console.log(cart);
 

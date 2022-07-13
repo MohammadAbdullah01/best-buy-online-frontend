@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
+import toast from 'react-hot-toast';
 
 const initialState = {
-    items: [],
+    items: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
     totalItems: 0,
     totalPrice: 0
 }
@@ -35,12 +36,16 @@ export const cartSlice = createSlice({
                 state.items[existingIndex] = {
                     ...state.items[existingIndex],
                     cartQuantity: state.items[existingIndex].cartQuantity + 1,
+
                 };
+                toast.success(`Increased ${action.payload.name} quantity`)
             } else {
                 let tempProductItem = { ...action.payload, cartQuantity: 1 };
                 state.items.push(tempProductItem);
-
+                toast.success(`${action.payload.name} has added to cart`)
             }
+
+            localStorage.setItem("cartItems", JSON.stringify(state.items))
         },
     }
 })
