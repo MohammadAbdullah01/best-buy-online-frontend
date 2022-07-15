@@ -1,24 +1,42 @@
-import { Table } from 'flowbite-react';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { Button, Table } from 'flowbite-react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addToCart, clearCart, decreaseQuantity, getTotals, removeFromCart } from '../../features/Cart/cartSlice';
 
 const Cart = () => {
     const { items: cartItems } = useSelector(state => state.cart)
-    console.log(cartItems);
+    const cart = useSelector(state => state.cart)
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getTotals())
+    }, cartItems, dispatch, cart)
+    const handleRemoveItem = (item) => {
+        dispatch(removeFromCart(item))
+    }
+    const handleDecreaseQuantity = (item) => {
+        dispatch(decreaseQuantity(item))
+    }
+    const handleIncreaseQuantity = (item) => {
+        dispatch(addToCart(item))
+    }
+    const handleClearCart = () => {
+        dispatch(clearCart())
+    }
 
     return (
         <>
 
             {cartItems.length == 0
                 ?
-                <div className='text-center'>
+                <div className='text-center  mt-[64px]'>
                     <h1>Your Cart is Empty</h1>
                     <Link to='/'><p> Click to Continue Shopping</p></Link>
                 </div>
                 :
                 <>
-                    <Table>
+                    <Table className='mt-[64px]'>
                         <Table.Head>
                             <Table.HeadCell>
                                 Product
@@ -40,7 +58,15 @@ const Cart = () => {
                                         <img className='w-20' src={item.img} alt="" />
                                         <div>
                                             <h1>{item.name}</h1>
-                                            <h1>Storage: {item.storage}</h1>
+                                            <h1
+                                                className='mb-2'
+                                            >Storage: {item.storage}</h1>
+                                            <Button
+                                                onClick={() => handleRemoveItem(item)}
+                                                size="xs"
+                                                color="dark">
+                                                Remove
+                                            </Button>
                                         </div>
                                     </div>
                                 </Table.Cell>
@@ -49,9 +75,9 @@ const Cart = () => {
                                 </Table.Cell>
                                 <Table.Cell>
                                     <div className='border-solid border border-gray-500 w-24 p-2 text-center'>
-                                        <button>-</button>
+                                        <button onClick={() => handleDecreaseQuantity(item)}>-</button>
                                         <span className='mx-3'>{item.cartQuantity}</span>
-                                        <button>+</button>
+                                        <button onClick={() => handleIncreaseQuantity(item)}>+</button>
                                     </div>
                                 </Table.Cell>
                                 <Table.Cell>
@@ -61,11 +87,20 @@ const Cart = () => {
 
                         </Table.Body>)}
                     </Table>
-                    <div className='flex w-full justify-end'>
+                    <div className='flex w-full justify-between'>
+                        <div className='mt-6 ml-5'>
+                            <Button
+                                onClick={handleClearCart}
+                                outline={true}
+                                gradientDuoTone="purpleToBlue"
+                            >
+                                Clear Cart
+                            </Button>
+                        </div>
                         <div className='justify-end text-xl mr-5'>
                             <div className='flex justify-between mt-6'>
                                 <h2>Subtotal</h2>
-                                <h2>$0</h2>
+                                <h2>${cart.totalPrice}</h2>
                             </div>
                             <button>Check Out</button>
                             <Link to='/'><p> Click to Continue Shopping</p></Link>
