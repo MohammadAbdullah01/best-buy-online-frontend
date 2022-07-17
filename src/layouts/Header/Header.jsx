@@ -2,7 +2,7 @@ import { Avatar, Dropdown, Navbar, Button } from 'flowbite-react';
 import React, { useState } from 'react';
 import { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { getTotals } from '../../features/Cart/cartSlice';
 import auth from '../../firebase/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -44,7 +44,7 @@ const Header = () => {
   }, [cart, dispatch])
 
   return (
-    <Disclosure as="nav" className={`${location.pathname === '/' ? navbar ? 'bg-gradient-to-r from-cyan-600 to-blue-700 ' : 'bg-transparent' : 'bg-gradient-to-r from-cyan-600 to-blue-700 '} fixed left-0 top-0 w-full z-50`}>
+    <Disclosure as="nav" className={`${location.pathname === '/' ? navbar ? 'bg-sky-500' : 'bg-sky-500 md:bg-transparent' : 'bg-sky-500 '} fixed left-0 top-0 w-full z-50`}>
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -71,17 +71,41 @@ const Header = () => {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link
+                      <NavLink
                         key={item.name}
                         to={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
+                        // className={classNames(
+                        //   item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        //   'px-3 py-2 rounded-md text-sm font-medium'
+                        // )}
+                        // aria-current={item.current ? 'page' : undefined}
+                        style={({ isActive }) => {
+                          return {
+                            fontSize: "15px",
+                            fontWeight: "bold",
+                            padding: '7px 13px',
+                            color: isActive ? "white" : "#09121c",
+                            borderBottom: isActive ? "2px solid #7733ff" : "",
+                          };
+                        }}
                       >
                         {item.name}
-                      </Link>
+                      </NavLink>
+
+                      //   <NavLink
+                      //   style={({ isActive }) => {
+                      //     return {
+                      //       display: "block",
+                      //       margin: "1rem 0",
+                      //       color: isActive ? "red" : "",
+                      //     };
+                      //   }}
+                      //   to={`/invoices/${invoice.number}`}
+                      //   key={invoice.number}
+                      // >
+                      //   {invoice.name}
+                      // </NavLink>
+
                     ))}
                   </div>
                 </div>
@@ -89,10 +113,10 @@ const Header = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white mr-3"
+                  className=" p-2 rounded-full text-white hover:text-gray-400  mr-5"
                 >
                   <span className="sr-only">View notifications</span>
-                  <Link to='/cart'><ShoppingCartIcon className="h-6 w-6 relative" aria-hidden="true" /><span className='absolute mt-[-37px] ml-[10px] text-rose-400'>{cart.totalItems}</span></Link>
+                  <Link to='/cart'><ShoppingCartIcon className="h-5  md:h-6 w-5 md:w-6 relative" aria-hidden="true" /><span className='absolute mt-[-37px] ml-[10px] text-rose-400 h-5 w-5 rounded-full bg-gray-800 text-sm'>{cart.totalItems}</span></Link>
                 </button>
 
                 {/* Profile dropdown */}
@@ -102,7 +126,7 @@ const Header = () => {
                       <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open user menu</span>
                         {user?.photoURL ?
-                          <img className="h-8 w-8 rounded-full" src={user?.photoURL} alt="" />
+                          <img className="h-8 md:h-10 w-8 md:w-10 rounded-full" src={user?.photoURL} alt="" />
                           :
                           <img className="h-8 w-8 rounded-full" src={demoUser} alt="" />
                         }
@@ -172,13 +196,24 @@ const Header = () => {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as={Link}
+                  as={NavLink}
                   to={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
+                  // className={classNames(
+                  //   item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  //   'block px-3 py-2 rounded-md text-base font-medium'
+                  // )}
+                  // aria-current={item.current ? 'page' : undefined}
+                  style={({ isActive }) => {
+                    return {
+                      fontSize: "15px",
+                      fontWeight: "bold",
+                      padding: '7px 13px',
+                      display: 'block',
+                      textAlign: 'center',
+                      color: isActive ? "white" : "#09121c",
+                      borderBottom: isActive ? "2px solid #7733ff" : "",
+                    };
+                  }}
                 >
                   {item.name}
                 </Disclosure.Button>
