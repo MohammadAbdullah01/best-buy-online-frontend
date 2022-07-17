@@ -1,23 +1,25 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cart from '../layouts/Cart/Cart';
-import Footer from '../layouts/Footer/Footer';
-import Header from '../layouts/Header/Header';
+import Bottom from '../layouts/Bottom/Bottom';
 import Home from '../pages/Home/Home';
 import NotFound from '../pages/NotFound/NotFound';
+import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
 
 const Index = () => {
     return (
         <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
+            <main>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/signin" element={<SignIn />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </main>
+            <Bottom />
         </BrowserRouter>
     );
 };

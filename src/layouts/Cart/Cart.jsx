@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, clearCart, decreaseQuantity, getTotals, removeFromCart } from '../../features/Cart/cartSlice';
+import Header from '../Header/Header';
 
 const Cart = () => {
     const { items: cartItems } = useSelector(state => state.cart)
@@ -27,7 +28,7 @@ const Cart = () => {
 
     return (
         <>
-
+            <Header />
             {cartItems.length == 0
                 ?
                 <div className='text-center  mt-[64px]'>

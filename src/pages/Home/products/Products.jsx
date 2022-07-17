@@ -11,7 +11,7 @@ const Products = () => {
                 <p>Loading...</p> :
                 error ?
                     <p>An error occurd</p> :
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-[64px]'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 '>
                         {
                             data.map(product => <Product
                                 key={product.id}
