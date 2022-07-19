@@ -16,7 +16,7 @@ import demoUser from '../../assets/demoUser.jpg'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Sign Up', href: '/signup', current: false }
+  { name: 'Products', href: '/products', current: false }
 ]
 
 function classNames(...classes) {
@@ -74,11 +74,6 @@ const Header = () => {
                       <NavLink
                         key={item.name}
                         to={item.href}
-                        // className={classNames(
-                        //   item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        //   'px-3 py-2 rounded-md text-sm font-medium'
-                        // )}
-                        // aria-current={item.current ? 'page' : undefined}
                         style={({ isActive }) => {
                           return {
                             fontSize: "15px",
@@ -91,21 +86,6 @@ const Header = () => {
                       >
                         {item.name}
                       </NavLink>
-
-                      //   <NavLink
-                      //   style={({ isActive }) => {
-                      //     return {
-                      //       display: "block",
-                      //       margin: "1rem 0",
-                      //       color: isActive ? "red" : "",
-                      //     };
-                      //   }}
-                      //   to={`/invoices/${invoice.number}`}
-                      //   key={invoice.number}
-                      // >
-                      //   {invoice.name}
-                      // </NavLink>
-
                     ))}
                   </div>
                 </div>
@@ -198,11 +178,6 @@ const Header = () => {
                   key={item.name}
                   as={NavLink}
                   to={item.href}
-                  // className={classNames(
-                  //   item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  //   'block px-3 py-2 rounded-md text-base font-medium'
-                  // )}
-                  // aria-current={item.current ? 'page' : undefined}
                   style={({ isActive }) => {
                     return {
                       fontSize: "15px",

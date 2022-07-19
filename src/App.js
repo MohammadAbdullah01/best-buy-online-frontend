@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App max-w-[1920px]	mx-auto">
       <Index />
       <Toaster
         position="top-center"

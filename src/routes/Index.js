@@ -6,6 +6,7 @@ import Home from '../pages/Home/Home';
 import NotFound from '../pages/NotFound/NotFound';
 import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
+import AllProducts from '../pages/AllProducts/AllProducts';
 
 const Index = () => {
     return (
@@ -14,6 +15,7 @@ const Index = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/products" element={<AllProducts />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="*" element={<NotFound />} />
