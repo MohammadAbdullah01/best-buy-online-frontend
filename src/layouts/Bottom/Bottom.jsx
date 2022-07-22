@@ -1,87 +1,42 @@
-import { Footer } from 'flowbite-react';
+// import { Footer } from 'flowbite-react';
 import React from 'react';
+import { ImFacebook } from "react-icons/im";
+import { BsTwitter } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa";
+import { IoLogoInstagram } from "react-icons/io5";
+import { AiOutlineYoutube } from "react-icons/ai";
 
 const Bottom = () => {
     return (
-        <Footer container={true}>
-            <div className="w-full">
-                <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-                    <div>
-                        <Footer.Brand
-                            href="https://flowbite.com"
-                            src="https://flowbite.com/docs/images/logo.svg"
-                            alt="Flowbite Logo"
-                            name="Flowbite"
-                        />
-                    </div>
-                    <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-                        <div>
-                            <Footer.Title title="about" />
-                            <Footer.LinkGroup col={true}>
-                                <Footer.Link href="#">
-                                    Flowbite
-                                </Footer.Link>
-                                <Footer.Link href="#">
-                                    Tailwind CSS
-                                </Footer.Link>
-                            </Footer.LinkGroup>
-                        </div>
-                        <div>
-                            <Footer.Title title="Follow us" />
-                            <Footer.LinkGroup col={true}>
-                                <Footer.Link href="#">
-                                    Github
-                                </Footer.Link>
-                                <Footer.Link href="#">
-                                    Discord
-                                </Footer.Link>
-                            </Footer.LinkGroup>
-                        </div>
-                        <div>
-                            <Footer.Title title="Legal" />
-                            <Footer.LinkGroup col={true}>
-                                <Footer.Link href="#">
-                                    Privacy Policy
-                                </Footer.Link>
-                                <Footer.Link href="#">
-                                    Terms & Conditions
-                                </Footer.Link>
-                            </Footer.LinkGroup>
-                        </div>
-                    </div>
+        <>
+            <footer className='py-10 text-white bg-slate-700'>
+                <h2 style={{ fontFamily: 'Oleo Script, cursive' }} className='mb-4 text-3xl text-center'>Best Buy</h2>
+                <div className='flex justify-center'>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>BRANDS</span>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>MEDIA</span>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>PR AGENCIES</span>
                 </div>
-                {/* <Footer.Divider />
-                <div className="w-full sm:flex sm:items-center sm:justify-between">
-                    <Footer.Copyright
-                        href="#"
-                        by="Flowbite™"
-                        year={2022}
-                    />
-                    <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-                        <Footer.Icon
-                            href="#"
-                        //   icon={BsFacebook}
-                        />
-                        <Footer.Icon
-                            href="#"
-                        //   icon={BsInstagram}
-                        />
-                        <Footer.Icon
-                            href="#"
-                        //   icon={BsTwitter}
-                        />
-                        <Footer.Icon
-                            href="#"
-                        //   icon={BsGithub}
-                        />
-                        <Footer.Icon
-                            href="#"
-                        //   icon={BsDribbble}
-                        />
-                    </div>
-                </div> */}
-            </div>
-        </Footer>
+                <hr className='m-4 border-solid border-1 border-slate-900' />
+                <div className='flex justify-center'>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>BRAND DIRECTORY</span>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>BLOG</span>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>PRICING</span>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>FAQ</span>
+                    <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>CONTACT US</span>
+                </div>
+                <div className='flex justify-center mt-4'>
+                    <span className='p-2 rounded-full border border-1 border-slate-900 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-100 hover:bg-red-500 duration-300 hover:cursor-pointer hover:border-white'><ImFacebook /></span>
+                    <span className='p-2 rounded-full border border-1 border-slate-900 ml-1   transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-100 hover:bg-red-500 duration-300 hover:cursor-pointer hover:border-white'><BsTwitter /></span>
+                    <span className='p-2 rounded-full border border-1 border-slate-900 ml-1   transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-100 hover:bg-red-500 duration-300 hover:cursor-pointer hover:border-white'><FaLinkedinIn /></span>
+                    <span className='p-2 rounded-full border border-1 border-slate-900 ml-1   transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-100 hover:bg-red-500 duration-300 hover:cursor-pointer hover:border-white'><AiOutlineYoutube /></span>
+                    <span className='p-2 rounded-full border border-1 border-slate-900 ml-1   transition ease-in-out delay-60 hover:-translate-y-1 hover:scale-100 hover:bg-red-500 duration-300 hover:cursor-pointer hover:border-white'><IoLogoInstagram /></span>
+                </div>
+                <div className='text-center mt-10 text-sm text-neutral-400'>
+                    <p><span className='mr-3'>Terms & Conditions</span> <span>Privacy Policy</span></p>
+                    <p className='mt-1'> Copyright &copy; 2022 Best Buy Ltd. All rights reserved. Site credit.</p>
+                </div>
+            </footer>
+        </>
     );
 };
 

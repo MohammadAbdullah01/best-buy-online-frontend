@@ -17,30 +17,6 @@ const Product = ({ product }) => {
 
     return (
         <div className="max-w-sm mx-auto">
-            {/* <Card
-                imgAlt={name}
-                imgSrc={img}
-                className='w-[30px]'
-            >
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                    {name}
-                </h5>
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                    Storage: <span className='text-slate-600'>{storage}</span>
-                </h5>
-                <div className="flex items-center justify-between">
-                    <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                        ${price}
-                    </span>
-                    <button
-                        onClick={() => handleAddToCart(product)}
-                        to="#"
-                        className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                        Add to Cart
-                    </button>
-                </div>
-            </Card> */}
             <div className='rounded-lg bg-white p-3'>
                 <div >
                     <img className='w-3/5 mx-auto' src={img} alt="" />

@@ -96,7 +96,7 @@ const Header = () => {
                   className=" p-2 rounded-full text-white hover:text-gray-400  mr-5"
                 >
                   <span className="sr-only">View notifications</span>
-                  <Link to='/cart'><ShoppingCartIcon className="h-5  md:h-6 w-5 md:w-6 relative" aria-hidden="true" /><span className='absolute mt-[-37px] ml-[10px] text-rose-400 h-5 w-5 rounded-full bg-gray-800 text-sm'>{cart.totalItems}</span></Link>
+                  <Link to='/cart'><ShoppingCartIcon className="h-5  md:h-6 w-5 md:w-6 relative" aria-hidden="true" /><span className='absolute mt-[-37px] ml-[10px] text-white h-5 w-5 rounded-full bg-gray-700 text-[14px]'>{cart.totalItems}</span></Link>
                 </button>
 
                 {/* Profile dropdown */}

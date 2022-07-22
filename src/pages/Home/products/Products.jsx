@@ -6,8 +6,8 @@ const Products = () => {
     const { data, error, isLoading } = useGetAllProductsQuery()
 
     return (
-        <div id='products' className=' px-5 md:px-10 lg:px-20'>
-            <h1 className='text-center font-bold my-9 text-4xl text-white'>Our Latest Models</h1>
+        <div id='products' className=' px-3 md:px-10 lg:px-20'>
+            <h1 className='text-center font-bold my-9 text-2xl md:text-3xl lg:text-4xl text-white'>Our Latest Models</h1>
             <div>
                 {isLoading ?
                     <p>Loading...</p> :

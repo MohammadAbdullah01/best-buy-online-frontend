@@ -45,12 +45,13 @@ const SignIn = () => {
     return (
         <>
             <Header />
-            <div className='bg-gradient-to-r from-cyan-500 to-blue-500 vh-cover-full pb-36 pt-8  mt-[64px]'>
+            <div className='bg-gradient-to-r from-cyan-500 to-blue-500 vh-cover-full pb-24 pt-8  mt-[64px]'>
                 <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center items-center px-10 md:px-28 lg:px-44'>
 
                     <div className='w-full'>
-                        <h1 className='text-3xl bold font-mono text-center my-3'>Please Sign In</h1>
+
                         <div className='bg-slate-300 px-4 py-6 rounded-lg'>
+                            <h1 style={{ fontFamily: 'Oleo Script, cursive' }} className='text-3xl bold  text-center my-3'>Please Sign In</h1>
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full gap-4">
                                 <div>
                                     <div className="mb-2 block">
@@ -84,12 +85,6 @@ const SignIn = () => {
                                     />
                                     {errors.password && <p className='text-rose-500'>Minimum 6 characters</p>}
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <Checkbox Display Name id="remember" />
-                                    <Label htmlFor="remember">
-                                        Accept <span className='text-sky-600'>terms and conditions</span>
-                                    </Label>
-                                </div>
                                 {
                                     (emailPassLoading || googleLoading)
                                     &&
@@ -112,7 +107,7 @@ const SignIn = () => {
                         </div>
                     </div >
                     <div className='hidden md:block'>
-                        <img className='sm:w-0 mt-5 md:w-64 lg:w-70' src={welcome} alt="" />
+                        <img className='sm:w-0 mt-7 lg:mt-12 md:w-64 lg:w-80' src={welcome} alt="" />
                     </div>
                 </div >
             </div >

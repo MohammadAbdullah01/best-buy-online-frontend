@@ -5,7 +5,7 @@ import auth from '../../firebase/firebase.init';
 import welcome from '../../assets/welcome.svg'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import ScaleLoader from "react-spinners/ScaleLoader";
@@ -61,14 +61,15 @@ const SignUp = () => {
     return (
         <>
             <Header />
-            <div className='bg-gradient-to-r from-cyan-500 to-blue-500 vh-cover-full pb-36 pt-8  mt-[64px]'>
+            <div className='bg-gradient-to-r from-cyan-500 to-blue-500 vh-cover-full pb-24 pt-8  mt-[64px]'>
                 <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center items-center px-10 md:px-28 lg:px-44'>
                     <div className='hidden md:block'>
                         <img className='sm:w-0 md:w-64 lg:w-80' src={welcome} alt="" />
                     </div>
                     <div className='w-full'>
-                        <h1 className='text-3xl bold font-mono text-center my-3'>Please Sign Up</h1>
                         <div className='bg-slate-300 px-4 py-6 rounded-lg'>
+                            <h1 style={{ fontFamily: 'Oleo Script, cursive' }} className='text-3xl bold text-center my-3'>Please Sign Up</h1>
+
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full gap-4">
                                 <div>
                                     <div className="mb-2 block">
@@ -120,10 +121,7 @@ const SignUp = () => {
                                     {errors.password && <p className='text-rose-500'>Minimum 6 characters</p>}
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Checkbox Display Name id="remember" />
-                                    <Label htmlFor="remember">
-                                        Accept <span className='text-sky-600'>terms and conditions</span>
-                                    </Label>
+                                    <p>Have an account? <Link className='text-sky-600' to='/signin'>Sign in here</Link></p>
                                 </div>
                                 {
                                     (emailPassLoading || profileUpdatingLoading || googleLoading)
