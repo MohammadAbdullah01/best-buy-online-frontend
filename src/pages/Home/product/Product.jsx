@@ -16,7 +16,7 @@ const Product = ({ product }) => {
     }
 
     return (
-        <div className="max-w-sm mx-auto">
+        <div className="max-w-sm mx-auto transition ease-in-out delay-150  hover:-translate-y-3   duration-300">
             <div className='rounded-lg bg-white p-3'>
                 <div >
                     <img className='w-3/5 mx-auto' src={img} alt="" />
