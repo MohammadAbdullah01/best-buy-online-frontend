@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { addToCart, clearCart, decreaseQuantity, getTotals, removeFromCart } from '../../features/Cart/cartSlice';
 import Header from '../Header/Header';
 import cartimg from '../../assets/cart.svg'
+import { BiArrowBack } from "react-icons/bi";
+import warning from '../../assets/warning.svg'
+
 
 const Cart = () => {
     const { items: cartItems } = useSelector(state => state.cart)
@@ -33,13 +36,14 @@ const Cart = () => {
             <Header />
             {cartItems.length == 0
                 ?
-                <div className='text-center mt-[80px] px-3 md:px-10 lg:px-20'>
-                    <h1>Your Cart is Empty</h1>
-                    <Link to='/'><p> Click to Continue Shopping</p></Link>
+                <div className='text-center mt-[80px] px-3 md:px-10 lg:px-20 mb-5'>
+                    <h1 className='md:text-xl lg:text-2xl'>Your Cart is Empty</h1>
+                    <img src={warning} className='w-28 md:w-56 mx-auto my-5' alt="" />
+                    <Link to='/'><p className='flex items-center justify-center md:text-xl lg:text-2xl text-neutral-600'> <BiArrowBack className='mr-1 text-neutral-600' />Continue Shopping</p></Link>
                 </div>
                 :
                 <>
-                    <div className='px-3 md:px-10 lg:px-20 mt-[80px]'>
+                    <div className='md:px-10 lg:px-20 mt-[80px] mb-5'>
                         <div className='w-full flex'>
                             <div className='w-2/6 hidden md:block'>
                                 <img className='w-56 lg:w-72 mt-10 mx-auto' src={cartimg} alt="" />
@@ -93,7 +97,7 @@ const Cart = () => {
                             </div>
                         </div>
                         <div className='flex w-full justify-between md:w-4/6 ml-auto'>
-                            <div className='mt-6 ml-5'>
+                            <div className='mt-6 ml-1'>
                                 <Button
                                     onClick={handleClearCart}
                                     outline={true}
@@ -102,13 +106,13 @@ const Cart = () => {
                                     Clear Cart
                                 </Button>
                             </div>
-                            <div className='justify-end text-xl mr-5'>
+                            <div className='justify-end md:text-xl mr-1'>
                                 <div className='flex justify-between mt-6'>
                                     <h2>Subtotal</h2>
                                     <h2>${cart.totalPrice}</h2>
                                 </div>
-                                <button>Check Out</button>
-                                <Link to='/'><p> Click to Continue Shopping</p></Link>
+                                <Link to='/checkout'><button style={{ backgroundColor: "#03543F" }} className='py-1 w-full text-white rounded-md my-1'>Check Out</button></Link>
+                                <Link to='/' className='text-neutral-600'><p className='flex items-center'> <BiArrowBack className='mr-1' />Continue Shopping</p></Link>
                             </div>
                         </div>
                     </div>

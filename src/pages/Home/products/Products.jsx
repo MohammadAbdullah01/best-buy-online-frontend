@@ -17,7 +17,7 @@ const Products = () => {
     const [dataLoading, setDataLoading] = useState(false)
     useEffect(() => {
         setDataLoading(true)
-        fetch(`http://localhost:5000/products?name=${searched}`)
+        fetch(`https://afternoon-eyrie-39455.herokuapp.com/products?name=${searched}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data)

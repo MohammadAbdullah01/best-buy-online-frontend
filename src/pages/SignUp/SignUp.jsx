@@ -129,8 +129,9 @@ const SignUp = () => {
                                     <ScaleLoader style={override} color={"#2b6ae3"} />
                                 }
                                 <button
+                                    style={{ backgroundColor: "#03543F" }}
                                     type="submit"
-                                    className='py-2 w-full bg-slate-900 text-white rounded hover:bg-slate-700'
+                                    className='py-2 w-full  text-white rounded '
                                 >Sign Up</button>
                             </form>
                             <div class="relative flex py-5 items-center">

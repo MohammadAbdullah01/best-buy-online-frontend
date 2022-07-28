@@ -2,7 +2,7 @@ import { Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import { toast } from 'react-toastify';
 import auth from '../../firebase/firebase.init';
@@ -87,6 +87,9 @@ const SignIn = () => {
                                     />
                                     {errors.password && <p className='text-rose-500'>Minimum 6 characters</p>}
                                 </div>
+                                <div className="flex items-center gap-2">
+                                    <p>New at best buy? <Link className='text-sky-600' to='/signup'>Sign up here</Link></p>
+                                </div>
                                 {
                                     (emailPassLoading || googleLoading)
                                     &&
@@ -103,8 +106,9 @@ const SignIn = () => {
                                 <div class="flex-grow border-t border-gray-400"></div>
                             </div>
                             <button
+                                style={{ backgroundColor: "#03543F" }}
                                 onClick={() => signInWithGoogle()}
-                                className='py-2 w-full bg-slate-900 text-white rounded hover:bg-slate-700'
+                                className='py-2 w-full  text-white rounded '
                             >Continue with google</button>
                         </div>
                     </div >

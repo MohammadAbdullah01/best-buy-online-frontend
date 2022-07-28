@@ -8,6 +8,8 @@ import SignIn from '../pages/SignIn/SignIn';
 import SignUp from '../pages/SignUp/SignUp';
 import AllProducts from '../pages/AllProducts/AllProducts';
 import PrivateRoute from '../layouts/PrivateRoute/PrivateRoute';
+import Checkout from '../features/Checkout/Checkout';
+import Payment from '../features/Payment/Payment';
 
 const Index = () => {
     return (
@@ -17,8 +19,10 @@ const Index = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/products" element={<AllProducts />} />
+                    <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/signin" element={<SignIn />} />
+                    <Route path="/payment" element={<PrivateRoute><Payment /></PrivateRoute>} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </main>
