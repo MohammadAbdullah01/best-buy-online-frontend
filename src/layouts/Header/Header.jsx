@@ -33,9 +33,7 @@ const Header = () => {
     }
   }
   window.addEventListener("scroll", changeBackground)
-  console.log(navbar);
   const location = useLocation();
-  console.log(location.pathname);
   const [user, loading, error] = useAuthState(auth);
   const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()

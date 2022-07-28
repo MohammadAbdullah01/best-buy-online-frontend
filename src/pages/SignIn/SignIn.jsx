@@ -2,7 +2,7 @@ import { Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import { toast } from 'react-toastify';
 import auth from '../../firebase/firebase.init';
@@ -15,7 +15,9 @@ const override = {
 };
 
 const SignIn = () => {
+    let location = useLocation();
     const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const {
         register,
@@ -30,7 +32,7 @@ const SignIn = () => {
     ] = useSignInWithEmailAndPassword(auth);
     useEffect(() => {
         if (emailPassUser || googleUser) {
-            navigate('/')
+            navigate(from)
         }
     }, [emailPassUser, googleUser, navigate])
     useEffect(() => {
