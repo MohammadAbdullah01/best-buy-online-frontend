@@ -13,7 +13,7 @@ export const cartSlice = createSlice({
     reducers: {
         addToCart(state, action) {
             const existingIndex = state.items.findIndex(
-                (item) => item.id === action.payload.id
+                (item) => item._id === action.payload._id
             );
 
             if (existingIndex >= 0) {
@@ -32,19 +32,19 @@ export const cartSlice = createSlice({
             localStorage.setItem("cartItems", JSON.stringify(state.items))
         },
         removeFromCart: (state, action) => {
-            const newCart = state.items.filter(item => item.id !== action.payload.id)
+            const newCart = state.items.filter(item => item._id !== action.payload._id)
             state.items = newCart
             localStorage.setItem("cartItems", JSON.stringify(state.items))
             toast.success(`Removed ${action.payload.name} from cart`)
         },
         decreaseQuantity: (state, action) => {
-            const indexNumber = state.items.findIndex(item => item.id === action.payload.id)
+            const indexNumber = state.items.findIndex(item => item._id === action.payload._id)
             if (state.items[indexNumber].cartQuantity > 1) {
                 state.items[indexNumber].cartQuantity -= 1;
                 toast.success(`Decreased ${action.payload.name} quantity`)
             }
             else if (state.items[indexNumber].cartQuantity === 1) {
-                const newCart = state.items.filter(item => item.id !== action.payload.id)
+                const newCart = state.items.filter(item => item._id !== action.payload._id)
                 state.items = newCart
                 toast.success(`Removed ${action.payload.name} from cart`)
             }
