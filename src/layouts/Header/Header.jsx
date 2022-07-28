@@ -6,17 +6,15 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { getTotals } from '../../features/Cart/cartSlice';
 import auth from '../../firebase/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import { signOut } from 'firebase/auth';
-
-
 import demoUser from '../../assets/demoUser.jpg'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Products', href: '/products', current: false }
+  { name: 'Products', href: '/products', current: false },
+  { name: 'Dahboard', href: '/dashboard', current: false }
 ]
 
 function classNames(...classes) {

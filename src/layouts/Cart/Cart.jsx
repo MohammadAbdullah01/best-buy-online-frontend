@@ -16,7 +16,8 @@ const Cart = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getTotals())
-    }, cartItems, dispatch, cart)
+    }, [cartItems, dispatch, cart])
+
     const handleRemoveItem = (item) => {
         dispatch(removeFromCart(item))
     }
@@ -26,7 +27,6 @@ const Cart = () => {
     const handleIncreaseQuantity = (item) => {
         dispatch(addToCart(item))
     }
-    console.log(cartItems);
     const handleClearCart = () => {
         dispatch(clearCart())
     }

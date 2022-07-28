@@ -1,0 +1,130 @@
+.sidebar1 {
+    position: fixed;
+    width: 240px;
+    left: -240px;
+    height: 100%;
+    background: #1e1e1e;
+    transition: all .5s ease;
+}
+
+.sidebar1 header {
+    font-size: 28px;
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    background: #1b1b1b;
+    user-select: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar1 a {
+    display: block;
+    height: 65px;
+    width: 100%;
+    color: white;
+    line-height: 65px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-left: 5px solid transparent;
+    font-family: 'Open Sans', sans-serif;
+    transition: all .5s ease;
+}
+
+/* .sidebar1 a.active, */
+.sidebar1 a:hover {
+    border-left: 5px solid #b93632;
+    color: #b93632;
+}
+
+.sidebar1 a i {
+    font-size: 23px;
+    margin-right: 16px;
+}
+
+.sidebar1 a span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#check1 {
+    display: none;
+}
+
+label #btn1,
+label #cancel {
+    position: absolute;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #262626;
+    margin: 15px 30px;
+    font-size: 29px;
+    background: #262626;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+    transition: all .5s ease;
+}
+
+label #cancel {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#check1:checked~.sidebar1 {
+    left: 0;
+}
+
+#check1:checked~label #btn1 {
+    margin-left: 245px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#check1:checked~label #cancel {
+    margin-left: 245px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* @media(max-width : 860px) {
+    .sidebar1 {
+        height: auto;
+        width: 70px;
+        left: 0;
+        margin: 100px 0;
+    }
+
+    #btn1,
+    #cancel {
+        display: none;
+    }
+
+    .sidebar1 span {
+        position: absolute;
+        margin-left: 23px;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .sidebar1 a {
+        height: 60px;
+    }
+
+    .sidebar1 a i {
+        margin-left: -10px;
+    }
+
+    .sidebar1 a:hover {
+        width: 200px;
+        background: inherit;
+    }
+
+    .sidebar1 a:hover span {
+        opacity: 1;
+        visibility: visible;
+    }
+} */

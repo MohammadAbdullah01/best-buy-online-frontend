@@ -5,11 +5,12 @@ import { BsTwitter } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { AiOutlineYoutube } from "react-icons/ai";
+import { useLocation } from 'react-router-dom';
 
 const Bottom = () => {
     return (
         <>
-            <footer className='py-10 text-white bg-slate-700'>
+            <footer className={`py-10 text-white bg-slate-700`}>
                 <h2 style={{ fontFamily: 'Oleo Script, cursive' }} className='mb-4 text-3xl text-center'>Best Buy</h2>
                 <div className='flex justify-center'>
                     <span className='mx-2 text-sm hover:text-red-500 hover:cursor-pointer'>BRANDS</span>

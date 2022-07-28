@@ -1,34 +1,74 @@
 import { Label, TextInput } from 'flowbite-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase/firebase.init';
 import Header from '../../layouts/Header/Header';
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = {
+    display: "block",
+    margin: "0 auto",
+};
 
 const Checkout = () => {
+    const [apiLoading, setApiLoading] = useState(false)
+    const { items: cartItems } = useSelector(state => state.cart)
+    const cart = useSelector(state => state.cart)
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate()
     const {
         register,
+        reset,
         handleSubmit,
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
         const name = data.name;
         const email = data.email;
-        const address = data.password;
+        const address = data.address;
         const mobile = data.mobile
-        navigate('/payment')
+        const date = new Date();
+        const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
+        const order = {
+            name: name,
+            email: email,
+            address: address,
+            mobile: mobile,
+            paid: false,
+            date: `${day}/${month}/${year}`,
+            products: cart.items,
+            totalItems: cart.totalItems,
+            totalPrice: cart.totalPrice
+        }
+        setApiLoading(true)
+        fetch(`http://localhost:5000/orders`, {
+            method: "post",
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    setApiLoading(false)
+                    navigate('/payment')
+                    toast.success('Order on progress')
+                    reset()
+                }
+            })
     }
-    console.log(user?.displayName);
     return (
         <>
             <Header />
             <div className='mt-[70px]  px-3 md:px-10 lg:px-20 pb-5'>
-                <div className='grid grid-cols-1 md:grid-cols-5'>
+                <div className='grid grid-cols-1 md:grid-cols-5 gap-x-3'>
                     <div className='col-span-3'>
-                        <h1 className='text-center text-lg md:text-xl'>Shipping Address</h1>
+                        <h1 className='text-center text-lg md:text-xl lg:text-2xl font-semibold pt-3'>Shipping Address</h1>
                         <div>
                             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-full gap-4">
                                 <div>
@@ -68,17 +108,17 @@ const Checkout = () => {
                                 <div>
                                     <div className="mb-2 block">
                                         <Label
-                                            htmlFor="phone"
-                                            value="Your Phone Number"
+                                            htmlFor="mobile"
+                                            value="Your Mobile Number"
                                         />
                                     </div>
                                     <TextInput
-                                        id="phone"
+                                        id="mobile"
                                         type="number"
-                                        {...register('phone', { pattern: /^.{11,}$/ })}
+                                        {...register('mobile', { pattern: /^.{11,}$/ })}
                                         required={true}
                                     />
-                                    {errors.phone && <p className='text-rose-500'>Minimum 11 characters</p>}
+                                    {errors.mobile && <p className='text-rose-500'>Minimum 11 characters</p>}
                                 </div>
                                 <div>
                                     <div className="mb-2 block">
@@ -95,11 +135,7 @@ const Checkout = () => {
                                     />
                                     {errors.address && <p className='text-rose-500'>Provide valid address</p>}
                                 </div>
-                                {/* {
-                                    (emailPassLoading || profileUpdatingLoading || googleLoading)
-                                    &&
-                                    <ScaleLoader style={override} color={"#2b6ae3"} />
-                                } */}
+                                {apiLoading && <ScaleLoader style={override} color={"#2b6ae3"} />}
                                 <button
                                     style={{ backgroundColor: "#03543F" }}
                                     type="submit"
@@ -108,8 +144,12 @@ const Checkout = () => {
                             </form>
                         </div>
                     </div>
-                    <div className='col-span-2'>
-                        <h1 className='text-center text-lg md:text-xl mt-5 md:mt-0'>Order Summary</h1>
+                    <div className='col-span-2 bg-gray-300 mt-4 md:mt-0 px-1 md:px-5 pt-5'>
+                        <h1 className='text-center text-lg md:text-xl lg:text-2xl font-semibold mt-5 md:mt-0'>Order Summary</h1>
+                        <div className='md:mt-3'>
+                            <h2 className='md:text-lg lg:text-xl'>Total Quantity: {cart.totalItems}</h2>
+                            <h2 className='md:text-lg lg:text-xl'>Total Price: {cart.totalPrice}</h2>
+                        </div>
                     </div>
                 </div>
             </div>

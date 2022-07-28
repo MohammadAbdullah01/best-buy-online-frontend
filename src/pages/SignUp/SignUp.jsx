@@ -140,8 +140,9 @@ const SignUp = () => {
                                 <div class="flex-grow border-t border-gray-400"></div>
                             </div>
                             <button
+                                style={{ backgroundColor: "#03543F" }}
                                 onClick={() => signInWithGoogle()}
-                                className='py-2 w-full bg-slate-900 text-white rounded hover:bg-slate-700'
+                                className='py-2 w-full  text-white rounded '
                             >Continue with google</button>
                         </div>
                     </div >
