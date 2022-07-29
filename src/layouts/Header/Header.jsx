@@ -10,6 +10,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import { signOut } from 'firebase/auth';
 import demoUser from '../../assets/demoUser.jpg'
+import title from '../../assets/title.png'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -58,11 +59,13 @@ const Header = () => {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                    alt="Workflow"
-                  />
+                  <Link to='/'>
+                    <img
+                      className="hidden lg:block h-8 w-36"
+                      src={title}
+                      alt="Workflow"
+                    />
+                  </Link>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">

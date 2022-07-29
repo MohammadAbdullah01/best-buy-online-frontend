@@ -31,7 +31,7 @@ const Banner = () => {
                                             position: 'absolute',
                                             opacity: opacity.to({ range: [0.0, 1.0], output: [0, 1] }),
                                         }}>
-                                        <h1 className='text-xl  md:text-[1.8rem] md:loading-[2rem]  lg:text-4xl font-bold text-neutral-700'>Get best mobile phones in <br /> cheap price</h1>
+                                        <h1 className='text-xl  md:text-[1.8rem] md:loading-[2rem]  lg:text-4xl font-bold text-neutral-700'>Get your daily products in<br /> cheap price</h1>
                                     </animated.div>
                                 ) : (
                                     <animated.div
@@ -47,7 +47,7 @@ const Banner = () => {
 
                     </div>
                     <div className='mt-20 md:mt-20 lg:mt-24'>
-                        <p className='text-neutral-700 text-[14px] md-[16px] lg:text-[18px] mb-2'>We provide best mobile phone in our area. Just choose your favourite phones and check out! Customer satisfaction is our first priority.</p>
+                        <p className='text-neutral-700 text-[14px] md-[16px] lg:text-[18px] mb-2'>We provide quality products to our customers. Customer satisfaction is our first priority. </p>
                         <a href='/#products'>
                             <Button className='mt-2' gradientMonochrome="info">
                                 Start Shopping

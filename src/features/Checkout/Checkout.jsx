@@ -45,7 +45,7 @@ const Checkout = () => {
             totalPrice: cart.totalPrice
         }
         setApiLoading(true)
-        fetch(`http://localhost:5000/orders`, {
+        fetch(`https://afternoon-eyrie-39455.herokuapp.com/orders`, {
             method: "post",
             headers: {
                 'content-type': "application/json"
@@ -115,10 +115,10 @@ const Checkout = () => {
                                     <TextInput
                                         id="mobile"
                                         type="number"
-                                        {...register('mobile', { pattern: /^.{11,}$/ })}
+                                        {...register('mobile', { pattern: /^.{5,}$/ })}
                                         required={true}
                                     />
-                                    {errors.mobile && <p className='text-rose-500'>Minimum 11 characters</p>}
+                                    {errors.mobile && <p className='text-rose-500'>Minimum 5 length</p>}
                                 </div>
                                 <div>
                                     <div className="mb-2 block">

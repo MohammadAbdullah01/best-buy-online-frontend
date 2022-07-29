@@ -68,7 +68,7 @@ const Cart = () => {
                                                     <div>
                                                         <img className='w-20' src={item.img} alt="" />
                                                     </div>
-                                                    <div>
+                                                    <div className='md:pl-2'>
                                                         <h3>{item.name}</h3>
                                                         <p>Price: {item.price}</p>
                                                         <Button
