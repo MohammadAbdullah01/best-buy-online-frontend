@@ -27,8 +27,8 @@ const Checkout = () => {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
-        const name = data.name;
-        const email = data.email;
+        const name = user?.displayName;
+        const email = user?.email;
         const address = data.address;
         const mobile = data.mobile
         const date = new Date();

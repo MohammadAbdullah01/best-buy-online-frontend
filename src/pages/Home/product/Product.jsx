@@ -14,11 +14,9 @@ const Product = ({ product }) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleAddToCart = (product) => {
-        console.log(product);
         dispatch(addToCart(product))
         navigate('/cart')
     }
-    console.log(product);
     return (
         <div className="max-w-sm mx-auto transition ease-in-out delay-150  hover:-translate-y-3   duration-300">
             <div style={{ backgroundColor: "#ECEFF1" }} className='rounded-lg bg-white p-3'>

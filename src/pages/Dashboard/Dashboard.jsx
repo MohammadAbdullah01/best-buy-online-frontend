@@ -11,9 +11,9 @@ const Dashboard = () => {
         <>
             <Header />
             <div className='mt-[64px]'>
-                <div >
+                <div style={{ zIndex: "100" }}>
                     <input type="checkbox" id="check1" />
-                    <label for="check1">
+                    <label for="check1" >
                         <HiMenuAlt2 id='btn1' />
                         <XIcon id="cancel" />
                     </label>
